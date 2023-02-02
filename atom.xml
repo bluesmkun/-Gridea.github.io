@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://bluesmkun.github.io/-Gridea.github.io</id>
+    <title>nekoly</title>
+    <updated>2023-02-02T06:37:18.465Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://bluesmkun.github.io/-Gridea.github.io"/>
+    <link rel="self" href="https://bluesmkun.github.io/-Gridea.github.io/atom.xml"/>
+    <subtitle>非礼勿视，非礼勿言</subtitle>
+    <logo>https://bluesmkun.github.io/-Gridea.github.io/images/avatar.png</logo>
+    <icon>https://bluesmkun.github.io/-Gridea.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, nekoly</rights>
+    <entry>
+        <title type="html"><![CDATA[如何在 Ubuntu 20.04 上搭建 Minecraft (我的世界) 服务器]]></title>
+        <id>https://bluesmkun.github.io/-Gridea.github.io/post/ru-he-zai-ubuntu-2004-shang-da-jian-minecraft-wo-de-shi-jie-fu-wu-qi/</id>
+        <link href="https://bluesmkun.github.io/-Gridea.github.io/post/ru-he-zai-ubuntu-2004-shang-da-jian-minecraft-wo-de-shi-jie-fu-wu-qi/">
+        </link>
+        <updated>2023-02-02T06:17:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="minecraft-一直是最流行的游戏之一-它是一个沙盒视频游戏用户可以体验无限的世界并且可以构建不同的结构从简单的房子到高耸的摩天大楼">Minecraft 一直是最流行的游戏之一。它是一个沙盒视频游戏，用户可以体验无限的世界，并且可以构建不同的结构，从简单的房子到高耸的摩天大楼。</h2>
+<h2 id="一-搭建准备">一、搭建准备</h2>
+<p>一台服务器（4G RAM以上）并且安装Ubuntu 20 . 04</p>
+<h2 id="二-升级-packages">二、升级 packages</h2>
+<p>安装必要的软件包来构建<code>mcrcon</code>工具：</p>
+<pre><code>sudo apt update 
+
+sudo apt install git build-essential
+</code></pre>
+<h2 id="三-安装java">三、安装Java</h2>
+<pre><code>sudo apt install openjdk-11-jre-headless
+</code></pre>
+<h2 id="四-创建-minecraft-用户">四、创建 Minecraft 用户</h2>
+<p>因为安全原因， Minecraft 不应该在 root 用户下运行。我们将会创建一个新的系统用户和用户组，用户主目录<code>/opt/minecraft</code>。这个用户有最小权限，来运行 Minecraft 服务器：</p>
+<pre><code>sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
+</code></pre>
+<p>我们不会为这个用户设置密码。这样，这个用户将不能通过 SSH 登录。想要修改<code>minecraft</code>用户，你将需要使用 root 登录服务器，或者其他有 sudo 权限的用户</p>
+<h2 id="五-在-ubuntu-上安装-minecraft">五、在 Ubuntu 上安装 Minecraft</h2>
+<p>在开始安装过程之前，切换到<code>minecraft</code>用户：</p>
+<pre><code>sudo su - minecraft
+</code></pre>
+<p>运行下面的命令在用户主目录下创建三个新的目录：</p>
+<pre><code>mkdir -p ~/{backups,tools,server}
+</code></pre>
+<ul>
+<li><code>backups</code>目录将会存储 服务器备份。你可以同步这个目录到你的远程备份服务器。</li>
+<li><code>tools</code> 目录将会托管<code>mcrcon</code>客户端和备份脚本。</li>
+<li><code>server</code>目录将会包含实际的 Minecraft 服务器和它的数据。</li>
+</ul>
+<h3 id="51-下载并且编译mcrcon">5.1 下载并且编译<code>mcrcon</code></h3>
+<p>RCON 是一个协议，它允许你连接到 Minecraft 服务器，并且执行命令。<a href="https://github.com/tiiffi/mcrcon">mcron</a>是一个 RCON 客户端，使用 C 语言编写而成。</p>
+<p>我们将会从 Github 下载最新的源代码，并且构建<code>mcrcon</code>二进制文件。</p>
+<p>从 Github 克隆<code>Tiiffi/mcrcon</code>源到<code>~/tools/mcron</code>目录：</p>
+<pre><code>git clone https://github.com/Tiiffi/mcrcon.git ~/tools/mcrcon
+</code></pre>
+<p>一旦完成，验证<code>mcrcon</code>编译成功，打印它的版本：</p>
+<pre><code>./mcrcon -v
+</code></pre>
+<p>输出看起来像是这样：</p>
+<pre><code>mcrcon 0.7.1 (built: Jun 23 2020 15:49:44) - https://github.com/Tiiffi/mcrcon
+Bug reports:
+    tiiffi+mcrcon at gmail
+    https://github.com/Tiiffi/mcrcon/issues/
+</code></pre>
+<h3 id="52-下载-minecraft-服务器">5.2 下载 Minecraft 服务器</h3>
+<p>有一些 Minecraft 服务器 mods 例如 <a href="https://getbukkit.org/download/craftbukkit">Craftbukkit</a> 或者 <a href="https://www.spigotmc.org/">Spigot</a> ，允许你在你的服务器上添加特性（插件）以及定制，以及调整服务器设置。</p>
+<p>在这个指南中，我们将会安装最新的 Mojang 官方 vanilla 我的世界服务器。同样的指令，同样适合于其他的服务器 mods。</p>
+<p>去 <a href="https://minecraft.net/en-us/download/server/">Minecraft 下载页面</a> 下载最新的 Minecraft 服务器 Java 压缩包（JAR）。<br>
+使用<code>wget</code>下载 jar 文件到<code>~/server</code>目录。</p>
+<pre><code>wget https://launcher.mojang.com/v1/objects/a0d03225615ba897619220e256a266cb33a44b6b/server.jar -P ~/server
+</code></pre>
+<h3 id="53-配置-minecraft-服务器">5.3 配置 Minecraft 服务器</h3>
+<p>一旦下载完成，切换到<code>~/server</code>目录，并且启动 Minecraft 服务器：</p>
+<pre><code>cd ~/server
+java -Xmx1024M -Xms1024M -jar server.jar nogui
+</code></pre>
+<p>第一次启动的时候，服务器执行一些操作，创建<code>server.properties</code>和<code>eula.txt</code>文件，并且停止。</p>
+<pre><code>[17:35:14] [main/ERROR]: Failed to load properties from file: server.properties
+[17:35:15] [main/WARN]: Failed to load eula.txt
+[17:35:15] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+</code></pre>
+<p>想要运行服务器，你需要同意<code>Minecraft EULA</code>，就像上面输出所有提示的。</p>
+<p>打开<code>eula.txt</code>文件，并且修改 <code>eula=false</code> 为 <code>eula=true</code>:</p>
+<pre><code>nano ~/server/eula.txt
+</code></pre>
+<p>输出：</p>
+<pre><code>eula=true
+</code></pre>
+<p>关闭并且保存文件。<br>
+下一步，打开<code>server.properties</code>文件，并且启动<code>rcon</code>协议，并且设置 rcon 密码：</p>
+<pre><code>nano ~/server/server.properties
+</code></pre>
+<p>定位到下面的行，并且更新它们的值，就像下面显示的一样：</p>
+<pre><code>rcon.port=25575
+rcon.password=strong-password
+enable-rcon=true
+</code></pre>
+<pre><code>不要忘记将`strong-password`修改为一些更安全的密码。如果你不想从远程位置访问 Minecraft 服务器，确保  rcon 端口被防火墙所阻塞。
+</code></pre>
+<p>在这里，你可以调整服务器的默认属性。想要获取更多关于服务器设置的信息，浏览<a href="https://minecraft.gamepedia.com/Server.properties">server.properties</a>页面。</p>
+<h2 id="六-创建-systemd-单元文件">六、创建 Systemd 单元文件</h2>
+<p>与手动启动 Minecraft 服务器相比，我们将会创建一个 Systemd 单元文件，并且将 Minecraft 当作服务来运行。</p>
+<p>通过<code>exit</code>来切换回你的 sudo 用户。</p>
+<p>打开你的文本编辑器，并且在<code>/etc/systemd/system/</code>目录下创建一个名为<code>minecraft.service</code>的文件：</p>
+<pre><code>sudo nano /etc/systemd/system/minecraft.service
+</code></pre>
+<p>粘贴下面的配置：</p>
+<pre><code>[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+User=minecraft
+Nice=1
+KillMode=none
+SuccessExitStatus=0 1
+ProtectHome=true
+ProtectSystem=full
+PrivateDevices=true
+NoNewPrivileges=true
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+ExecStop=/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password stop
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>根据你的服务器资源来调整<code>Xmx</code>和<code>Xms</code>标志。<code>Xmx</code>标志定义 Java 虚拟机的最大申请内存。而<code>Xms</code>定义了初始申请内存。当前，确保你使用了正确的<code>rcon</code>端口和密码。</p>
+<p>保存文件，并且重新加载 systemd 管理配置：</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre>
+<p>你还可以输入下面的命令，启动 Minecraft 服务器：</p>
+<pre><code>sudo systemctl start minecraft
+</code></pre>
+<p>当你第一次启动服务的时候，它将会生成服务器配置文件和目录，包括 我的世界。</p>
+<p>使用下面的命令，检查服务状态：</p>
+<pre><code>sudo systemctl status minecraft
+</code></pre>
+<p>输出：</p>
+<pre><code>● minecraft.service - Minecraft Server
+     Loaded: loaded (/etc/systemd/system/minecraft.service; disabled; vendor preset: enabled)
+     Active: active (running) since Tue 2020-06-23 17:48:44 UTC; 8s ago
+   Main PID: 1338035 (java)
+      Tasks: 15 (limit: 1074)
+     Memory: 465.3M
+     CGroup: /system.slice/minecraft.service
+             └─1338035 /usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+</code></pre>
+<p>最后，启动 Minecraft 服务开机启动。</p>
+<pre><code>sudo systemctl enable minecraft
+</code></pre>
+<h2 id="七-调整防火墙">七、调整防火墙</h2>
+<p>Ubuntu 附带防火墙工具 UFW。如果在你的系统上启用了防火墙，你想从你的本地网络访问 Minecraft 服务器，你需要打开端口<code>25565</code>:</p>
+<pre><code>sudo ufw allow 25565/tcp
+</code></pre>
+<h2 id="八-配置备份">八、配置备份</h2>
+<p>在这一节，我们创建一个备份 shell 脚本和计划任务，以便自动备份 Minecraft 服务器。</p>
+<p>切换到<code>minecraft</code>:</p>
+<pre><code>sudo su - minecraft
+</code></pre>
+<p>打开你的文本编辑器，并且创建下面的文件：</p>
+<pre><code>nano /opt/minecraft/tools/backup.sh
+</code></pre>
+<p>粘贴下面的配置：</p>
+<pre><code>#!/bin/bash
+
+function rcon {
+  /opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password &quot;$1&quot;
+}
+
+rcon &quot;save-off&quot;
+rcon &quot;save-all&quot;
+tar -cvpzf /opt/minecraft/backups/server-$(date +%F-%H-%M).tar.gz /opt/minecraft/server
+rcon &quot;save-on&quot;
+
+## Delete older backups
+find /opt/minecraft/backups/ -type f -mtime +7 -name '*.gz' -delete
+</code></pre>
+<p>保存文件，并且将脚本设置为可执行：</p>
+<pre><code>chmod +x /opt/minecraft/tools/backup.sh
+</code></pre>
+<p>下一步，创建一个定时任务，每天自动在一个固定时间运行一次。</p>
+<p>打开你的 crontab 文件，输入：</p>
+<pre><code>crontab -e
+</code></pre>
+<p>每天 23：00 运行备份脚本，粘贴下面的文本：</p>
+<pre><code>0 23 * * * /opt/minecraft/tools/backup.sh
+</code></pre>
+<h2 id="九-访问-minecraft-终端">九、访问 Minecraft 终端</h2>
+<p>想要访问 Minecraft 终端，使用<code>mcrcon</code>工具。你需要指定主机，rcon 端口，rcon 密码并且使用<code>-t</code>（启动<code>mcrcon</code>终端模式）：</p>
+<pre><code>/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password -t
+</code></pre>
+<p>输出：</p>
+<pre><code>Logged in. Type &quot;Q&quot; to quit!
+&gt; 
+</code></pre>
+<p>从远程位置访问 Minecraft 终端，确保 rcon 端口没有被阻塞。</p>
+<p>如果你正常连接到 Minecraft 终端，不想输入一大串命令，你可以创建一个 <a href="https://linuxize.com/post/how-to-create-bash-aliases/">bash 关联</a>。</p>
+<h2 id="十-总结">十、总结</h2>
+<p>我们已经向你展示如何在 Ubuntu 20.04 上搭建一个 Minecraft（我的世界）服务器，并且设置每天备份。<br>
+现在你可以启动你的 <a href="https://www.minecraft.net/en-us/download/">Minecraft 客户端</a>，连接到服务器，并且开始 Minecraft 冒险。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker安装Nginx Proxy Manager]]></title>
+        <id>https://bluesmkun.github.io/-Gridea.github.io/post/docker-an-zhuang-nginx-proxy-manager/</id>
+        <link href="https://bluesmkun.github.io/-Gridea.github.io/post/docker-an-zhuang-nginx-proxy-manager/">
+        </link>
+        <updated>2023-02-01T12:32:11.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="nginx-proxy-manager是一个很简单的反向代理工具">Nginx proxy manager是一个很简单的反向代理工具。</h2>
+<p>官网：<a href="https://nginxproxymanager.com/">https://nginxproxymanager.com</a></p>
+<p>门槛极低，操作简单，不需要你掌握很复杂的Nginx配置知识，只需要几步就能很轻松完成反向代理的设置和SSL证书的部署</p>
+<h2 id="开始部署">开始部署</h2>
+<ul>
+<li>服务器环境：Debian 10（Ubuntu 20.04也可以）或以上版本</li>
+</ul>
+<h2 id="升级-packages">升级 packages</h2>
+<pre><code>
+apt install wget curl sudo vim git -y
+
+</code></pre>
+<h2 id="安装-docker-环境">安装 Docker 环境</h2>
+<pre><code>
+wget -qO- get.docker.com | bash
+
+  
+
+systemctl enable docker # 设置开机自动启动
+
+</code></pre>
+<h2 id="安装-docker-compose">安装 Docker-compose</h2>
+<pre><code>
+sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+
+</code></pre>
+<h2 id="安装-nginx-proxy-manager">安装 Nginx Proxy Manager</h2>
+<h2 id="创建安装目录">创建安装目录</h2>
+<pre><code>
+mkdir -p /root/data/docker_data/npm
+
+  
+
+cd /root/data/docker_data/npm
+
+</code></pre>
+<p>这边我们直接用 docker 的方式安装。</p>
+<pre><code>
+vim docker-compose.yml
+
+</code></pre>
+<p>英文输入法下，按 i</p>
+<pre><code>
+version: '3'
+
+services:
+
+app:
+
+image: 'jc21/nginx-proxy-manager:latest'
+
+restart: unless-stopped
+
+ports:
+
+- '80:80' # 冒号左边可以改成自己服务器未被占用的端口
+
+- '81:81' # 冒号左边可以改成自己服务器未被占用的端口
+
+- '443:443' # 冒号左边可以改成自己服务器未被占用的端口
+
+volumes:
+
+- ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中
+
+- ./letsencrypt:/etc/letsencrypt # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中
+
+</code></pre>
+<p>按一下 esc，然后 :wq 保存退出，之后</p>
+<h2 id="运行并访问-nginx-proxy-manager">运行并访问 Nginx Proxy Manager</h2>
+<pre><code>
+cd /root/data/docker_data/npm # 来到 dockercompose 文件所在的文件夹下
+
+  
+
+docker-compose up -
+
+</code></pre>
+<p>理论上我们就可以输入 http://ip:81 访问了。</p>
+<p>默认登陆名和密码：</p>
+<pre><code>
+Email: admin@example.com
+
+Password: changeme
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux搭建 X-UI]]></title>
+        <id>https://bluesmkun.github.io/-Gridea.github.io/post/linux-da-jian-x-ui/</id>
+        <link href="https://bluesmkun.github.io/-Gridea.github.io/post/linux-da-jian-x-ui/">
+        </link>
+        <updated>2023-02-01T12:23:39.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="x-ui是一个管理面版">X-UI是一个管理面版</h2>
+<p>众所周知的原因，我们有些时候并不能顺利的访问某些网站，这对于我们查阅资料的时候带来了诸多的不便。<br>
+进而催生出了许许多多的代理工具，而X-UI就是一个集大成者。</p>
+<h2 id="搭建准备">搭建准备</h2>
+<p>你需要一个域名（免费的<a href="https://nic.eu.org/">eu.org</a>即可），一台海外服务器，一个SSH连接工具</p>
+<h2 id="开始搭建">开始搭建</h2>
+<p>服务器环境：Debian 或 Ubuntu</p>
+<h2 id="升级-packages">升级 packages</h2>
+<pre><code>apt update -y
+apt install -y curl
+apt install -y socat
+</code></pre>
+<h2 id="申请证书">申请证书</h2>
+<p>运行Acme脚本</p>
+<pre><code>curl https://get.acme.sh | sh
+</code></pre>
+<p>申请证书及密钥<br>
+【将代码中注释的邮箱和域名，改为你自己的】</p>
+<pre><code>~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com
+
+~/.acme.sh/acme.sh  --issue -d 输入你的域名  --standalone
+</code></pre>
+<p>下载证书及密钥</p>
+<pre><code>~/.acme.sh/acme.sh --installcert -d 输入你的域名 --key-file /root/private.key --fullchain-file /root/cert.crt
+</code></pre>
+<h2 id="安装升级x-ui面板一键脚本">安装&amp;升级x-ui面板一键脚本</h2>
+<pre><code>bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)             #原版
+
+bash &lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)      #魔改版
+</code></pre>
+<p>这个时候你就已经搭建完成了，输入 http://ip:端口 就可以访问了。</p>
+]]></content>
+    </entry>
+</feed>

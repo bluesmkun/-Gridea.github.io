@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="neko个人博客">
+<meta name="description" content="非礼勿视，非礼勿言">
+<meta name="theme-color" content="#000">
+<title>nekoly</title>
+<link rel="shortcut icon" href="/favicon.ico?v=1675319802634">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="/media/css/muse.css">
+
+<link rel="stylesheet" href="/media/fonts/font-awesome.css">
+<link
+  href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
+  rel="stylesheet" type="text/css">
+
+<link href="/media/hljs/styles/androidstudio.css"
+  rel="stylesheet">
+
+<script src="/media/hljs/highlight.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.0/velocity.ui.min.js"></script>
+
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+
+</head>
+
+<body>
+  <div class="head-top-line"></div>
+  <div class="header-box">
+    
+<div class="muse">
+  <header class="header bg-color ">
+    <div class="blog-header box-shadow-wrapper  " id="header">
+      <div class="nav-toggle" id="nav_toggle">
+        <div class="toggle-box">
+          <div class="line line-top"></div>
+          <div class="line line-center"></div>
+          <div class="line line-bottom"></div>
+        </div>
+      </div>
+      <div class="site-meta">       
+        <div class="site-title">
+          
+            <a href="/" class="brand">
+              <span>nekoly</span>
+            </a>  
+          
+        </div>
+        
+          <p class="subtitle">非礼勿视，非礼勿言</p>
+        
+      </div>
+      <nav class="site-nav" id="site_nav">
+        <ul id="nav_ul">
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/" target="_self">
+                  <i class="fa fa-home"></i> 首页
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="https://bluesmkun.github.io/-Gridea.github.io/archives/" target="_self">
+                  <i class="fa fa-globe"></i> 归档
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item nav-item-active">
+              
+              
+                <a href="/tags/" target="_self">
+                  <i class="fa fa-tags"></i> 标签
+                </a>
+              
+            </li>
+          
+            
+            
+              
+            
+            <li class="nav-item ">
+              
+              
+                <a href="/post/about/" target="_self">
+                  <i class="fa fa-user"></i> 关于
+                </a>
+              
+            </li>
+          
+          
+            
+              <li class="nav-item ">
+                <a href="/friends/" target="_self">
+                  
+                    <i class="fa fa-address-book"></i> 友情链接
+                  
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+
+<script type="text/javascript"> 
+ 
+  let showNav = true;
+
+  let navToggle = document.querySelector('#nav_toggle'),
+  siteNav = document.querySelector('#site_nav');
+  
+  function navClick() {
+    let sideBar = document.querySelector('.sidebar');
+    let navUl = document.querySelector('#nav_ul');
+    navToggle.classList.toggle('nav-toggle-active');
+    siteNav.classList.toggle('nav-menu-active');
+    if (siteNav.classList.contains('nav-menu-active')) {
+      siteNav.style = "height: " + (navUl.children.length * 42) +"px !important";
+    } else {
+      siteNav.style = "";
+    }
+  }
+
+  navToggle.addEventListener('click',navClick);  
+</script>
+  </div>
+  <div class="main-continer">
+    
+    <div
+      class="section-layout bg-color muse">
+      <div class="section-layout-wrapper">
+        <div id="sidebarMeta" class="sidebar">
+    
+<div class="sidebar-wrapper box-shadow-wrapper ">
+  <div class="sidebar-item">
+    <img class="site-author-image right-motion" src="/images/avatar.png"/>
+    <p class="site-author-name">某不著名爱猫人士</p>
+    
+  </div>
+  <div class="sidebar-item side-item-stat right-motion">
+    <div class="sidebar-item-box">
+      <a href="/archives/">
+        
+        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-name">文章</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="">
+        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-name">分类</span>
+      </a>
+    </div>
+    <div class="sidebar-item-box">
+      <a href="/tags/">
+        <span class="site-item-stat-count">4</span>
+        <span class="site-item-stat-name">标签</span>
+      </a>
+    </div>
+  </div>
+  
+  
+
+
+</div>
+</div>
+<script>
+  let sidebarMeta = document.querySelector('#sidebarMeta');
+  let scheme = 'muse';
+  let sidebarWrapper = document.querySelector('.sidebar-wrapper');
+  if (sidebarMeta && (scheme === 'pisces' || scheme === 'gemini')) {
+    document.addEventListener('scroll', function(e) {
+      if (document.scrollingElement.scrollTop > parseInt(sidebarMeta.style.marginTop) + 10) {
+        sidebarWrapper.classList.add('home-sidebar-fixed')
+      } else {
+        sidebarWrapper.classList.remove('home-sidebar-fixed')
+      }
+    });
+  }
+  </script>
+        <div class="section-box box-shadow-wrapper">
+          <section class="section tags-section bg-color posts-expand">
+            <div class="tags-box">
+  <div class="tag-cloud-title">
+    目前共计 4 个标签
+  </div>
+  <div class="tag-cloud-list" id="tags">
+    
+      
+      
+        
+          
+            
+      
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+        
+          
+        
+      
+      <a class="cloud-tag" href="https://bluesmkun.github.io/-Gridea.github.io/tag/t_cID8j7V/" rel="1">我的世界</a>
+    
+      
+      
+        
+          
+        
+          
+            
+      
+        
+          
+        
+          
+            
+      
+        
+          
+            
+      
+      <a class="cloud-tag" href="https://bluesmkun.github.io/-Gridea.github.io/tag/oygRlPYoX7/" rel="3">Linux</a>
+    
+      
+      
+        
+          
+        
+          
+        
+          
+            
+      
+        
+          
+        
+          
+        
+          
+            
+      
+        
+          
+        
+          
+            
+      
+      <a class="cloud-tag" href="https://bluesmkun.github.io/-Gridea.github.io/tag/dB2r8D4WjZ/" rel="3">教程</a>
+    
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+        
+          
+            
+      
+        
+          
+        
+          
+        
+      
+      <a class="cloud-tag" href="https://bluesmkun.github.io/-Gridea.github.io/tag/RRKREX7nO/" rel="1">Docker</a>
+    
+  </div>
+</div>
+<script>
+
+  let fontStart = 12, fontEnd = 30, colorStart = '#666', colorEnd = '#000';
+  let tags = document.querySelector('#tags').children;
+  let counts = [];
+  for(let i = 0; i < tags.length; i++) {
+    counts.push(tags[i].rel);
+  }
+  let lowest = Math.min.apply(null,counts), highest = Math.max.apply(null,counts);;
+  let range = highest - lowest;
+  if (range === 0) {
+    range = 1;
+  }
+  let fontIncr, colorIncr;
+  fontIncr = (fontEnd - fontStart) / range;
+  
+  let sColorArr = toRGB(colorStart), eColorArr = toRGB(colorEnd);
+
+  for(let i = 0; i < tags.length; i++) {
+    let disCount = tags[i].rel - lowest;
+    let fontSize = fontStart + disCount * fontIncr;
+    let style = 'font-size: ' + fontSize + 'px;';
+    let arr = [];
+    for(let c = 0; c < sColorArr.length; c++) {
+      if (disCount === 0) {
+        disCount = 1;
+      }
+      let val = (sColorArr[c] - eColorArr[c]) / range * disCount;
+      if (val >= 100) {
+        val = eColorArr[c];
+      } else if (val <= 0) {
+        val = sColorArr[c];
+      }
+      arr[c] = Math.floor(val);
+    }
+    style += 'color: ' + toHex(arr);
+    tags[i].style = style;
+  }
+
+  function toRGB(code) {
+    if (code.length === 4) {
+      code = code.replace(/(\w)(\w)(\w)/gi, "\$1\$1\$2\$2\$3\$3");
+    }
+    var hex = /(\w{2})(\w{2})(\w{2})/.exec(code);
+    return [parseInt(hex[1], 16), parseInt(hex[2], 16), parseInt(hex[3], 16)];
+  }
+
+  function toHex(ary) {
+    return "#" + ((1 << 24) + (ary[0] << 16) + (ary[1] << 8) + ary[2]).toString(16).slice(1);
+  }
+
+</script>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="footer-box">
+  <footer class="footer">
+    <div class="copyright">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | © 2019-2020 Theme By <a href="https://github.com/hsxyhao/gridea-theme-next" target="_blank">HsxyHao</a>
+    </div>
+    <div class="poweredby">
+      Powered by bluemskun
+    </div>
+  </footer>
+  
+  
+    <div class="drawer-box right" id="drawer_box">
+      <span class="muse-line muse-line-first"></span>
+      <span class="muse-line muse-line-middle"></span>
+      <span class="muse-line muse-line-last"></span>
+    </div>
+  
+  <div class="muse back-to-top" id="back_to_top">
+    <i class="fa fa-arrow-up"></i>
+    
+  </div>
+  
+  
+    
+<link rel="stylesheet" href="/media/live2d/css/live2d.css" />
+<div class="box-scale">
+  <div id="landlord" style="left: 5px;bottom: 5px;"
+    data-key="">
+    <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
+    
+
+      <div class="message" style="opacity:0"></div>
+      <div class="live_talk_input_body">
+        <div class="live_talk_input_name_body">
+          <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off"
+            placeholder="你的名字" />
+        </div>
+        <div class="live_talk_input_text_body">
+          <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off"
+            placeholder="要和我聊什么呀？" />
+          <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
+        </div>
+      </div>
+      <input name="live_talk" id="live_talk" value="1" type="hidden" />
+      <div class="live_ico_box">
+        <div class="live_ico_item type_info" id="showInfoBtn"></div>
+        <div class="live_ico_item type_talk" id="showTalkBtn"></div>
+        
+        <div class="live_ico_item type_youdu" id="youduButton"></div>
+        <div class="live_ico_item type_quit" id="hideButton"></div>
+        <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+        <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
+        <input id="duType" value="douqilai" type="hidden">
+        
+      </div>
+    
+  </div>
+</div>
+<div id="open_live2d">召唤看板娘</div>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+  var message_Path = 'https://cdn.jsdelivr.net/gh/hsxyhao/live2d.github.io@master/';
+  let landlord = document.querySelector('#landlord');
+  var apiKey = landlord.dataset.key;
+</script>
+<script type="text/javascript" src="/media/live2d/js/live2d.js"></script>
+<script>
+	var home_Path = document.location.protocol + '//' + window.document.location.hostname + ":" + window.document.location.port + '/';
+	var userAgent = window.navigator.userAgent.toLowerCase();
+	var norunAI = ["android", "iphone", "ipod", "ipad", "windows phone", "mqqbrowser", "msie", "trident/7.0"];
+	var norunFlag = false;
+
+	for (var i = 0; i < norunAI.length; i++) {
+		if (userAgent.indexOf(norunAI[i]) > -1) {
+			norunFlag = true;
+			break;
+		}
+	}
+
+	if (!window.WebGLRenderingContext) {
+		norunFlag = true;
+	}
+
+	if (!norunFlag) {
+		var hitFlag = false;
+		var AIFadeFlag = false;
+		var liveTlakTimer = null;
+		var sleepTimer_ = null;
+		var AITalkFlag = false;
+		var talkNum = 0;
+		(function () {
+			function renderTip(template, context) {
+				var tokenReg = /(\\)?\{([^\{\}\\]+)(\\)?\}/g;
+				return template.replace(tokenReg, function (word, slash1, token, slash2) {
+					if (slash1 || slash2) {
+						return word.replace('\\', '');
+					}
+					var variables = token.replace(/\s/g, '').split('.');
+					var currentObject = context;
+					var i, length, variable;
+					for (i = 0, length = variables.length; i < length; ++i) {
+						variable = variables[i];
+						currentObject = currentObject[variable];
+						if (currentObject === undefined || currentObject === null) return '';
+					}
+					return currentObject;
+				});
+			}
+
+			String.prototype.renderTip = function (context) {
+				return renderTip(this, context);
+			};
+
+			var re = /x/;
+			re.toString = function () {
+				showMessage('哈哈，你打开了控制台，是想要看看我的秘密吗？', 5000);
+				return '';
+			};
+
+			$(document).on('copy', function () {
+				showMessage('你都复制了些什么呀，转载要记得加上出处哦~~', 5000);
+			});
+
+			function initTips() {
+				$.ajax({
+					cache: true,
+					url: message_Path + 'message.json',
+					dataType: "json",
+					success: function (result) {
+						$.each(result.mouseover, function (index, tips) {
+							$(tips.selector).mouseover(function () {
+								var text = tips.text;
+								if (Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1) - 1];
+								text = text.renderTip({ text: $(this).text() });
+								showMessage(text, 3000);
+								talkValTimer();
+								clearInterval(liveTlakTimer);
+								liveTlakTimer = null;
+							});
+							$(tips.selector).mouseout(function () {
+								showHitokoto();
+								if (liveTlakTimer == null) {
+									liveTlakTimer = window.setInterval(function () {
+										showHitokoto();
+									}, 15000);
+								};
+							});
+						});
+						$.each(result.click, function (index, tips) {
+							$(tips.selector).click(function () {
+								if (hitFlag) {
+									return false
+								}
+								hitFlag = true;
+								setTimeout(function () {
+									hitFlag = false;
+								}, 8000);
+								var text = tips.text;
+								if (Array.isArray(tips.text)) text = tips.text[Math.floor(Math.random() * tips.text.length + 1) - 1];
+								text = text.renderTip({ text: $(this).text() });
+								showMessage(text, 3000);
+							});
+							clearInterval(liveTlakTimer);
+							liveTlakTimer = null;
+							if (liveTlakTimer == null) {
+								liveTlakTimer = window.setInterval(function () {
+									showHitokoto();
+								}, 15000);
+							};
+						});
+					}
+				});
+			}
+			initTips();
+
+			var text;
+			if (document.referrer !== '') {
+				var referrer = document.createElement('a');
+				referrer.href = document.referrer;
+				text = '嗨！来自 <span style="color:#0099cc;">' + referrer.hostname + '</span> 的朋友！';
+				var domain = referrer.hostname.split('.')[1];
+				if (domain == 'baidu') {
+					text = '嗨！ 来自 百度搜索 的朋友！<br>欢迎访问<span style="color:#0099cc;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+				} else if (domain == 'so') {
+					text = '嗨！ 来自 360搜索 的朋友！<br>欢迎访问<span style="color:#0099cc;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+				} else if (domain == 'google') {
+					text = '嗨！ 来自 谷歌搜索 的朋友！<br>欢迎访问<span style="color:#0099cc;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+				}
+			} else {
+				if (window.location.href == home_Path) { //主页URL判断，需要斜杠结尾
+					var now = (new Date()).getHours();
+					if (now > 23 || now <= 5) {
+						text = '你是夜猫子呀？这么晚还不睡觉，明天起的来嘛？';
+					} else if (now > 5 && now <= 7) {
+						text = '早上好！一日之计在于晨，美好的一天就要开始了！';
+					} else if (now > 7 && now <= 11) {
+						text = '上午好！工作顺利嘛，不要久坐，多起来走动走动哦！';
+					} else if (now > 11 && now <= 14) {
+						text = '中午了，工作了一个上午，现在是午餐时间！';
+					} else if (now > 14 && now <= 17) {
+						text = '午后很容易犯困呢，今天的运动目标完成了吗？';
+					} else if (now > 17 && now <= 19) {
+						text = '傍晚了！窗外夕阳的景色很美丽呢，最美不过夕阳红~~';
+					} else if (now > 19 && now <= 21) {
+						text = '晚上好，今天过得怎么样？';
+					} else if (now > 21 && now <= 23) {
+						text = '已经这么晚了呀，早点休息吧，晚安~~';
+					} else {
+						text = '嗨~ 快来逗我玩吧！';
+					}
+				} else {
+					text = '欢迎阅读<span style="color:#0099cc;">「 ' + document.title.split(' - ')[0] + ' 」</span>';
+				}
+			}
+			showMessage(text, 12000);
+		})();
+
+		liveTlakTimer = setInterval(function () {
+			showHitokoto();
+		}, 15000);
+
+		function showHitokoto() {
+			if (sessionStorage.getItem("Sleepy") !== "1") {
+				if (!AITalkFlag) {
+					$.getJSON('https://v1.hitokoto.cn/', function (result) {
+						talkValTimer();
+						showMessage(result.hitokoto, 0);
+					});
+				}
+			} else {
+				hideMessage(0);
+				if (sleepTimer_ == null) {
+					sleepTimer_ = setInterval(function () {
+						checkSleep();
+					}, 200);
+				}
+			}
+		}
+
+		function checkSleep() {
+			var sleepStatu = sessionStorage.getItem("Sleepy");
+			if (sleepStatu !== '1') {
+				talkValTimer();
+				showMessage('你回来啦~', 0);
+				clearInterval(sleepTimer_);
+				sleepTimer_ = null;
+			}
+		}
+
+		function showMessage(text, timeout) {
+			if (Array.isArray(text)) text = text[Math.floor(Math.random() * text.length + 1) - 1];
+			$('.message').stop();
+			$('.message').html(text);
+			$('.message').fadeTo(200, 1);
+			//if (timeout === null) timeout = 5000;
+			//hideMessage(timeout);
+		}
+		function talkValTimer() {
+			$('#live_talk').val('1');
+		}
+
+		function hideMessage(timeout) {
+			//$('.message').stop().css('opacity',1);
+			if (timeout === null) timeout = 5000;
+			$('.message').delay(timeout).fadeTo(200, 0);
+		}
+
+		function initLive2d() {
+			$('#hideButton').on('click', function () {
+				if (AIFadeFlag) {
+					return false;
+				} else {
+					AIFadeFlag = true;
+					localStorage.setItem("live2dhidden", "0");
+					$('#landlord').fadeOut(200);
+					$('#open_live2d').delay(200).fadeIn(200);
+					setTimeout(function () {
+						AIFadeFlag = false;
+					}, 300);
+				}
+			});
+			$('#open_live2d').on('click', function () {
+				if (AIFadeFlag) {
+					return false;
+				} else {
+					AIFadeFlag = true;
+					localStorage.setItem("live2dhidden", "1");
+					$('#open_live2d').fadeOut(200);
+					$('#landlord').delay(200).fadeIn(200);
+					setTimeout(function () {
+						AIFadeFlag = false;
+					}, 300);
+				}
+			});
+			$('#youduButton').on('click', function () {
+				if ($('#youduButton').hasClass('doudong')) {
+					var typeIs = $('#youduButton').attr('data-type');
+					$('#youduButton').removeClass('doudong');
+					$('body').removeClass(typeIs);
+					$('#youduButton').attr('data-type', '');
+				} else {
+					var duType = $('#duType').val();
+					var duArr = duType.split(",");
+					var dataType = duArr[Math.floor(Math.random() * duArr.length)];
+
+					$('#youduButton').addClass('doudong');
+					$('#youduButton').attr('data-type', dataType);
+					$('body').addClass(dataType);
+				}
+			});
+			if (apiKey) {
+				$('#showInfoBtn').on('click', function () {
+					var live_statu = $('#live_statu_val').val();
+					if (live_statu == "0") {
+						return
+					} else {
+						$('#live_statu_val').val("0");
+						$('.live_talk_input_body').fadeOut(500);
+						AITalkFlag = false;
+						showHitokoto();
+						$('#showTalkBtn').show();
+						$('#showInfoBtn').hide();
+					}
+				});
+				$('#showTalkBtn').on('click', function () {
+					var live_statu = $('#live_statu_val').val();
+					if (live_statu == "1") {
+						return
+					} else {
+						$('#live_statu_val').val("1");
+						$('.live_talk_input_body').fadeIn(500);
+						AITalkFlag = true;
+						$('#showTalkBtn').hide();
+						$('#showInfoBtn').show();
+
+					}
+				});
+				$('#talk_send').on('click', function () {
+					var info_ = $('#AIuserText').val();
+					var userid_ = $('#AIuserName').val();
+					if (info_ == "") {
+						showMessage('写点什么吧！', 0);
+						return;
+					}
+					if (userid_ == "") {
+						showMessage('聊之前请告诉我你的名字吧！', 0);
+						return;
+					}
+					showMessage('思考中~', 0);
+					let protocol = window.location.protocol.indexOf("s") > 0 ? "https" : "http";
+					$.ajax({
+						type: "get",
+						url: `${protocol}://www.tuling123.com/openapi/api?key=${apiKey}&info=${info_}`,
+						dataType: "json",
+						success: function (res) {
+							talkValTimer();
+							showMessage(res.text, 0);
+							$('#AIuserText').val("");
+							sessionStorage.setItem("live2duser", userid_);
+						},
+						error: function (e) {
+							talkValTimer();
+							showMessage('似乎有什么错误，请和站长联系！', 0);
+						}
+					});
+				});
+			} else {
+				$('#showInfoBtn').hide();
+				$('#showTalkBtn').hide();
+			}
+			//获取音乐信息初始化
+			var bgmListInfo = $('input[name=live2dBGM]');
+			if (bgmListInfo.length == 0) {
+				$('#musicButton').hide();
+			} else {
+				var bgmPlayNow = parseInt($('#live2d_bgm').attr('data-bgm'));
+				var bgmPlayTime = 0;
+				var live2dBGM_Num = sessionStorage.getItem("live2dBGM_Num");
+				var live2dBGM_PlayTime = sessionStorage.getItem("live2dBGM_PlayTime");
+				if (live2dBGM_Num) {
+					if (live2dBGM_Num <= $('input[name=live2dBGM]').length - 1) {
+						bgmPlayNow = parseInt(live2dBGM_Num);
+					}
+				}
+				if (live2dBGM_PlayTime) {
+					bgmPlayTime = parseInt(live2dBGM_PlayTime);
+				}
+				var live2dBGMSrc = bgmListInfo.eq(bgmPlayNow).val();
+				$('#live2d_bgm').attr('data-bgm', bgmPlayNow);
+				$('#live2d_bgm').attr('src', live2dBGMSrc);
+				$('#live2d_bgm')[0].currentTime = bgmPlayTime;
+				$('#live2d_bgm')[0].volume = 0.5;
+				var live2dBGM_IsPlay = sessionStorage.getItem("live2dBGM_IsPlay");
+				var live2dBGM_WindowClose = sessionStorage.getItem("live2dBGM_WindowClose");
+				if (live2dBGM_IsPlay == '0' && live2dBGM_WindowClose == '0') {
+					$('#live2d_bgm')[0].play();
+					$('#musicButton').addClass('play');
+				}
+				sessionStorage.setItem("live2dBGM_WindowClose", '1');
+				$('#musicButton').on('click', function () {
+					if ($('#musicButton').hasClass('play')) {
+						$('#live2d_bgm')[0].pause();
+						$('#musicButton').removeClass('play');
+						sessionStorage.setItem("live2dBGM_IsPlay", '1');
+					} else {
+						$('#live2d_bgm')[0].play();
+						$('#musicButton').addClass('play');
+						sessionStorage.setItem("live2dBGM_IsPlay", '0');
+					}
+				});
+				window.onbeforeunload = function () {
+					sessionStorage.setItem("live2dBGM_WindowClose", '0');
+					if ($('#musicButton').hasClass('play')) {
+						sessionStorage.setItem("live2dBGM_IsPlay", '0');
+					}
+				}
+				document.getElementById('live2d_bgm').addEventListener("timeupdate", function () {
+					var live2dBgmPlayTimeNow = document.getElementById('live2d_bgm').currentTime;
+					sessionStorage.setItem("live2dBGM_PlayTime", live2dBgmPlayTimeNow);
+				});
+				document.getElementById('live2d_bgm').addEventListener("ended", function () {
+					var listNow = parseInt($('#live2d_bgm').attr('data-bgm'));
+					listNow++;
+					if (listNow > $('input[name=live2dBGM]').length - 1) {
+						listNow = 0;
+					}
+					var listNewSrc = $('input[name=live2dBGM]').eq(listNow).val();
+					sessionStorage.setItem("live2dBGM_Num", listNow);
+					$('#live2d_bgm').attr('src', listNewSrc);
+					$('#live2d_bgm')[0].play();
+					$('#live2d_bgm').attr('data-bgm', listNow);
+				});
+				document.getElementById('live2d_bgm').addEventListener("error", function () {
+					$('#live2d_bgm')[0].pause();
+					$('#musicButton').removeClass('play');
+					showMessage('音乐似乎加载不出来了呢！', 0);
+				});
+			}
+			//获取用户名
+			var live2dUser = sessionStorage.getItem("live2duser");
+			if (live2dUser !== null) {
+				$('#AIuserName').val(live2dUser);
+			}
+			//获取位置
+			var landL = sessionStorage.getItem("historywidth");
+			var landB = sessionStorage.getItem("historyheight");
+			if (landL == null || landB == null) {
+				landL = '5px'
+				landB = '0px'
+			}
+			$('#landlord').css('left', landL + 'px');
+			$('#landlord').css('bottom', landB + 'px');
+			//移动
+			function getEvent() {
+				return window.event || arguments.callee.caller.arguments[0];
+			}
+			var smcc = document.getElementById("landlord");
+			var moveX = 0;
+			var moveY = 0;
+			var moveBottom = 0;
+			var moveLeft = 0;
+			var moveable = false;
+			var docMouseMoveEvent = document.onmousemove;
+			var docMouseUpEvent = document.onmouseup;
+			smcc.onmousedown = function () {
+				var ent = getEvent();
+				moveable = true;
+				moveX = ent.clientX;
+				moveY = ent.clientY;
+				var obj = smcc;
+				moveBottom = parseInt(obj.style.bottom);
+				moveLeft = parseInt(obj.style.left);
+				if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
+					window.getSelection().removeAllRanges();
+				}
+				document.onmousemove = function () {
+					if (moveable) {
+						var ent = getEvent();
+						var x = moveLeft + ent.clientX - moveX;
+						var y = moveBottom + (moveY - ent.clientY);
+						obj.style.left = x + "px";
+						obj.style.bottom = y + "px";
+					}
+				};
+				document.onmouseup = function () {
+					if (moveable) {
+						var historywidth = obj.style.left;
+						var historyheight = obj.style.bottom;
+						historywidth = historywidth.replace('px', '');
+						historyheight = historyheight.replace('px', '');
+						sessionStorage.setItem("historywidth", historywidth);
+						sessionStorage.setItem("historyheight", historyheight);
+						document.onmousemove = docMouseMoveEvent;
+						document.onmouseup = docMouseUpEvent;
+						moveable = false;
+						moveX = 0;
+						moveY = 0;
+						moveBottom = 0;
+						moveLeft = 0;
+					}
+				};
+			};
+		}
+		$(document).ready(function () {
+			var AIimgSrc = [];
+			let chooseLive2d = 'histoire'
+			if (chooseLive2d === 'histoire') {
+				AIimgSrc.push(message_Path + "model/histoire/histoire.1024/texture_00.png");
+				AIimgSrc.push(message_Path + "model/histoire/histoire.1024/texture_01.png");
+				AIimgSrc.push(message_Path + "model/histoire/histoire.1024/texture_02.png");
+				AIimgSrc.push(message_Path + "model/histoire/histoire.1024/texture_03.png");
+			} else if (chooseLive2d === 'rem') {
+				AIimgSrc.push(message_Path + "model/rem/remu2048/texture_00.png");
+			} else if (chooseLive2d === 'Aoba') {
+				AIimgSrc.push(message_Path + "model/Aoba/textures/texture_00.png");
+			} else if (chooseLive2d === 'hijiki') {
+				AIimgSrc.push(message_Path + "model/hijiki/moc/hijiki.2048/texture_00.png");
+			} else if (chooseLive2d === 'tororo') {
+				AIimgSrc.push(message_Path + "model/tororo/moc/tororo.2048/texture_00.png");
+			}
+			var images = [];
+			var imgLength = AIimgSrc.length;
+			var loadingNum = 0;
+			for (var i = 0; i < imgLength; i++) {
+				images[i] = new Image();
+				images[i].src = AIimgSrc[i];
+				images[i].onload = function () {
+					loadingNum++;
+					if (loadingNum === imgLength) {
+						var live2dhidden = localStorage.getItem("live2dhidden");
+						if (live2dhidden === "0") {
+							setTimeout(function () {
+								$('#open_live2d').fadeIn(200);
+							}, 1300);
+						} else {
+							setTimeout(function () {
+								$('#landlord').fadeIn(200);
+							}, 1300);
+						}
+						let model = '';
+						if (chooseLive2d === 'histoire') {
+							model = message_Path + "model/histoire/model.json";
+						} else if (chooseLive2d === 'rem') {
+							model = message_Path + "model/rem/model.json";
+						} else if (chooseLive2d === 'Aoba') {
+							model = message_Path + "model/Aoba/model.json";
+						} else if (chooseLive2d === 'hijiki') {
+							model = message_Path + "model/hijiki/hijiki.model.json";
+						} else if (chooseLive2d === 'tororo') {
+							model = message_Path + "model/tororo/tororo.model.json";
+						}
+						setTimeout(function () {
+							loadlive2d("live2d", model);
+						}, 1000);
+						initLive2d();
+						images = null;
+					}
+				}
+			}
+		});
+	}
+</script>
+  
+  
+</div>
+<script>
+
+  let sideBarOpen = 'sidebar-open';
+  let body = document.body;
+  let back2Top = document.querySelector('#back_to_top'),
+  back2TopText = document.querySelector('#back_to_top_text'),
+  drawerBox = document.querySelector('#drawer_box'),
+  rightSideBar = document.querySelector('.sidebar'),
+  viewport = document.querySelector('body');
+
+  function scrollAnimation(currentY, targetY) {
+   
+    let needScrollTop = targetY - currentY
+    let _currentY = currentY
+    setTimeout(() => {
+      const dist = Math.ceil(needScrollTop / 10)
+      _currentY += dist
+      window.scrollTo(_currentY, currentY)
+      if (needScrollTop > 10 || needScrollTop < -10) {
+        scrollAnimation(_currentY, targetY)
+      } else {
+        window.scrollTo(_currentY, targetY)
+      }
+    }, 1)
+  }
+
+  back2Top.addEventListener("click", function(e) {
+    scrollAnimation(document.scrollingElement.scrollTop, 0);
+    e.stopPropagation();
+    return false;
+  });
+  
+  window.addEventListener('scroll', function(e) {
+    let percent = document.scrollingElement.scrollTop / (document.scrollingElement.scrollHeight - document.scrollingElement.clientHeight) * 100;
+    if (percent > 1 && !back2Top.classList.contains('back-top-active')) {
+      back2Top.classList.add('back-top-active');
+    }
+    if (percent == 0) {
+      back2Top.classList.remove('back-top-active');
+    }
+    if (back2TopText) {
+      back2TopText.textContent = Math.floor(percent);
+    }
+  });
+
+  
+  let hasCacu = false;
+  window.onresize = function() {
+    if (window.width > 991) {
+      calcuHeight();
+    } else {
+      hasCacu = false;
+    }
+  }
+
+  function calcuHeight() {
+    // 动态调整站点概览高度
+    if (!hasCacu && back2Top.classList.contains('pisces') || back2Top.classList.contains('gemini')) {
+      let sideBar = document.querySelector('.sidebar');
+      let navUl = document.querySelector('#site_nav');
+      sideBar.style = 'margin-top:' + (navUl.offsetHeight + navUl.offsetTop + 15) + 'px;';
+      hasCacu = true;
+    }
+  }
+  calcuHeight();
+  
+  let open = false, MOTION_TIME = 300, RIGHT_MOVE_DIS = '320px';
+
+  if (drawerBox) {
+    let rightMotions = document.querySelectorAll('.right-motion');
+    let right = drawerBox.classList.contains('right');
+
+    let transitionDir = right ? "transition.slideRightIn" : "transition.slideLeftIn";
+
+    let openProp, closeProp;
+    if (right) {
+      openProp = {
+        paddingRight: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingRight: '0px'
+      };
+    } else {
+      openProp = {
+        paddingLeft: RIGHT_MOVE_DIS 
+      };
+      closeProp = {
+        paddingLeft: '0px'
+      };
+    }
+
+    drawerBox.onclick = function() {
+      open = !open;
+      window.Velocity(rightSideBar, 'stop');
+      window.Velocity(viewport, 'stop');
+      window.Velocity(rightMotions, 'stop');
+      if (open) {
+        window.Velocity(rightSideBar, {
+          width: RIGHT_MOVE_DIS
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, transitionDir,{ });
+          }
+        })
+        window.Velocity(viewport, openProp,{
+          duration: MOTION_TIME
+        });
+      } else {
+        window.Velocity(rightSideBar, {
+          width: '0px'
+        }, {
+          duration: MOTION_TIME,
+          begin: function() {
+            window.Velocity(rightMotions, {
+              opacity: 0
+            });
+          }
+        })
+        window.Velocity(viewport, closeProp ,{
+          duration: MOTION_TIME
+        });
+      }
+      for (let i = 0; i < drawerBox.children.length; i++) {
+        drawerBox.children[i].classList.toggle('muse-line');
+      }
+      drawerBox.classList.toggle(sideBarOpen);
+    }
+  }
+
+  // 链接跳转
+  let newWindow = 'false'
+  if (newWindow === 'true') {
+    let links = document.querySelectorAll('.post-body a')
+    links.forEach(item => {
+      if (!item.classList.contains('btn')) {
+        item.setAttribute("target","_blank");
+      }
+    })
+  }
+  // 代码高亮
+  hljs.initHighlightingOnLoad();
+
+</script>
+  </div>
+</body>
+<input hidden id="copy" />
+<script>
+  //拿来主义(真香)^_^，Clipboard 实现摘自掘金 https://juejin.im/post/5aefeb6e6fb9a07aa43c20af
+  window.Clipboard = (function (window, document, navigator) {
+    var textArea,
+      copy;
+
+    // 判断是不是ios端
+    function isOS() {
+      return navigator.userAgent.match(/ipad|iphone/i);
+    }
+    //创建文本元素
+    function createTextArea(text) {
+      textArea = document.createElement('textArea');
+      textArea.value = text;
+      textArea.style.width = 0;
+      textArea.style.height = 0;
+      textArea.clientHeight = 0;
+      textArea.clientWidth = 0;
+      document.body.appendChild(textArea);
+    }
+    //选择内容
+    function selectText() {
+      var range,
+        selection;
+
+      if (isOS()) {
+        range = document.createRange();
+        range.selectNodeContents(textArea);
+        selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        textArea.setSelectionRange(0, 999999);
+      } else {
+        textArea.select();
+      }
+    }
+
+    //复制到剪贴板
+    function copyToClipboard() {
+      try {
+        document.execCommand("Copy")
+      } catch (err) {
+        alert("复制错误！请手动复制！")
+      }
+      document.body.removeChild(textArea);
+    }
+
+    copy = function (text) {
+      createTextArea(text);
+      selectText();
+      copyToClipboard();
+    };
+
+    return {
+      copy: copy
+    };
+  })(window, document, navigator);
+
+  function copyCode(e) {
+    if (e.srcElement.tagName === 'SPAN' && e.srcElement.classList.contains('copy-code')) {
+      let code = e.currentTarget.querySelector('code');
+      var text = code.innerText;
+      if (e.srcElement.textContent === '复制成功') {
+        console.log('复制操作频率过高');
+        return;
+      }
+      e.srcElement.textContent = '复制成功';
+      (function (elem) {
+        setTimeout(() => {
+          if (elem.textContent === '复制成功') {
+            elem.textContent = '复制代码'
+          }
+        }, 1000);
+      })(e.srcElement)
+      Clipboard.copy(text);
+    }
+  }
+
+  let pres = document.querySelectorAll('pre');
+  pres.forEach(pre => {
+    let code = pre.querySelector('code');
+    let copyElem = document.createElement('span');
+    copyElem.classList.add('copy-code');
+    copyElem.textContent = '复制代码';
+    pre.appendChild(copyElem);
+    pre.onclick = copyCode
+  })
+</script>
+<script src="/media/js/motion.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+<script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 500
+  });
+</script>
+
+<!-- <div class="search-mask" id="search_mask">
+  <div class="search-box">
+    <div class="search-title">
+      <i class="fa fa-search"></i>
+      <div class="input-box">
+        <input type="text" placeholder="搜索">
+      </div>
+      <i class="fa fa-times-circle"></i>
+    </div>
+    <div class="result">
+      
+      <div class="item">
+        <a class="result-title" href="https://bluesmkun.github.io/-Gridea.github.io/post/ru-he-zai-ubuntu-2004-shang-da-jian-minecraft-wo-de-shi-jie-fu-wu-qi/"" data-c="
+          &lt;h2 id=&#34;minecraft-一直是最流行的游戏之一-它是一个沙盒视频游戏用户可以体验无限的世界并且可以构建不同的结构从简单的房子到高耸的摩天大楼&#34;&gt;Minecraft 一直是最流行的游戏之一。它是一个沙盒视频游戏，用户可以体验无限的世界，并且可以构建不同的结构，从简单的房子到高耸的摩天大楼。&lt;/h2&gt;
+&lt;h2 id=&#34;一-搭建准备&#34;&gt;一、搭建准备&lt;/h2&gt;
+&lt;p&gt;一台服务器（4G RAM以上）并且安装Ubuntu 20 . 04&lt;/p&gt;
+&lt;h2 id=&#34;二-升级-packages&#34;&gt;二、升级 packages&lt;/h2&gt;
+&lt;p&gt;安装必要的软件包来构建&lt;code&gt;mcrcon&lt;/code&gt;工具：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt update 
+
+sudo apt install git build-essential
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;三-安装java&#34;&gt;三、安装Java&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install openjdk-11-jre-headless
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;四-创建-minecraft-用户&#34;&gt;四、创建 Minecraft 用户&lt;/h2&gt;
+&lt;p&gt;因为安全原因， Minecraft 不应该在 root 用户下运行。我们将会创建一个新的系统用户和用户组，用户主目录&lt;code&gt;/opt/minecraft&lt;/code&gt;。这个用户有最小权限，来运行 Minecraft 服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;我们不会为这个用户设置密码。这样，这个用户将不能通过 SSH 登录。想要修改&lt;code&gt;minecraft&lt;/code&gt;用户，你将需要使用 root 登录服务器，或者其他有 sudo 权限的用户&lt;/p&gt;
+&lt;h2 id=&#34;五-在-ubuntu-上安装-minecraft&#34;&gt;五、在 Ubuntu 上安装 Minecraft&lt;/h2&gt;
+&lt;p&gt;在开始安装过程之前，切换到&lt;code&gt;minecraft&lt;/code&gt;用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo su - minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行下面的命令在用户主目录下创建三个新的目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/{backups,tools,server}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;backups&lt;/code&gt;目录将会存储 服务器备份。你可以同步这个目录到你的远程备份服务器。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tools&lt;/code&gt; 目录将会托管&lt;code&gt;mcrcon&lt;/code&gt;客户端和备份脚本。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;server&lt;/code&gt;目录将会包含实际的 Minecraft 服务器和它的数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;51-下载并且编译mcrcon&#34;&gt;5.1 下载并且编译&lt;code&gt;mcrcon&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;RCON 是一个协议，它允许你连接到 Minecraft 服务器，并且执行命令。&lt;a href=&#34;https://github.com/tiiffi/mcrcon&#34;&gt;mcron&lt;/a&gt;是一个 RCON 客户端，使用 C 语言编写而成。&lt;/p&gt;
+&lt;p&gt;我们将会从 Github 下载最新的源代码，并且构建&lt;code&gt;mcrcon&lt;/code&gt;二进制文件。&lt;/p&gt;
+&lt;p&gt;从 Github 克隆&lt;code&gt;Tiiffi/mcrcon&lt;/code&gt;源到&lt;code&gt;~/tools/mcron&lt;/code&gt;目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/Tiiffi/mcrcon.git ~/tools/mcrcon
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一旦完成，验证&lt;code&gt;mcrcon&lt;/code&gt;编译成功，打印它的版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./mcrcon -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出看起来像是这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mcrcon 0.7.1 (built: Jun 23 2020 15:49:44) - https://github.com/Tiiffi/mcrcon
+Bug reports:
+    tiiffi+mcrcon at gmail
+    https://github.com/Tiiffi/mcrcon/issues/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;52-下载-minecraft-服务器&#34;&gt;5.2 下载 Minecraft 服务器&lt;/h3&gt;
+&lt;p&gt;有一些 Minecraft 服务器 mods 例如 &lt;a href=&#34;https://getbukkit.org/download/craftbukkit&#34;&gt;Craftbukkit&lt;/a&gt; 或者 &lt;a href=&#34;https://www.spigotmc.org/&#34;&gt;Spigot&lt;/a&gt; ，允许你在你的服务器上添加特性（插件）以及定制，以及调整服务器设置。&lt;/p&gt;
+&lt;p&gt;在这个指南中，我们将会安装最新的 Mojang 官方 vanilla 我的世界服务器。同样的指令，同样适合于其他的服务器 mods。&lt;/p&gt;
+&lt;p&gt;去 &lt;a href=&#34;https://minecraft.net/en-us/download/server/&#34;&gt;Minecraft 下载页面&lt;/a&gt; 下载最新的 Minecraft 服务器 Java 压缩包（JAR）。&lt;br&gt;
+使用&lt;code&gt;wget&lt;/code&gt;下载 jar 文件到&lt;code&gt;~/server&lt;/code&gt;目录。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://launcher.mojang.com/v1/objects/a0d03225615ba897619220e256a266cb33a44b6b/server.jar -P ~/server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;53-配置-minecraft-服务器&#34;&gt;5.3 配置 Minecraft 服务器&lt;/h3&gt;
+&lt;p&gt;一旦下载完成，切换到&lt;code&gt;~/server&lt;/code&gt;目录，并且启动 Minecraft 服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd ~/server
+java -Xmx1024M -Xms1024M -jar server.jar nogui
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第一次启动的时候，服务器执行一些操作，创建&lt;code&gt;server.properties&lt;/code&gt;和&lt;code&gt;eula.txt&lt;/code&gt;文件，并且停止。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[17:35:14] [main/ERROR]: Failed to load properties from file: server.properties
+[17:35:15] [main/WARN]: Failed to load eula.txt
+[17:35:15] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;想要运行服务器，你需要同意&lt;code&gt;Minecraft EULA&lt;/code&gt;，就像上面输出所有提示的。&lt;/p&gt;
+&lt;p&gt;打开&lt;code&gt;eula.txt&lt;/code&gt;文件，并且修改 &lt;code&gt;eula=false&lt;/code&gt; 为 &lt;code&gt;eula=true&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nano ~/server/eula.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;eula=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关闭并且保存文件。&lt;br&gt;
+下一步，打开&lt;code&gt;server.properties&lt;/code&gt;文件，并且启动&lt;code&gt;rcon&lt;/code&gt;协议，并且设置 rcon 密码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nano ~/server/server.properties
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定位到下面的行，并且更新它们的值，就像下面显示的一样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rcon.port=25575
+rcon.password=strong-password
+enable-rcon=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;不要忘记将`strong-password`修改为一些更安全的密码。如果你不想从远程位置访问 Minecraft 服务器，确保  rcon 端口被防火墙所阻塞。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在这里，你可以调整服务器的默认属性。想要获取更多关于服务器设置的信息，浏览&lt;a href=&#34;https://minecraft.gamepedia.com/Server.properties&#34;&gt;server.properties&lt;/a&gt;页面。&lt;/p&gt;
+&lt;h2 id=&#34;六-创建-systemd-单元文件&#34;&gt;六、创建 Systemd 单元文件&lt;/h2&gt;
+&lt;p&gt;与手动启动 Minecraft 服务器相比，我们将会创建一个 Systemd 单元文件，并且将 Minecraft 当作服务来运行。&lt;/p&gt;
+&lt;p&gt;通过&lt;code&gt;exit&lt;/code&gt;来切换回你的 sudo 用户。&lt;/p&gt;
+&lt;p&gt;打开你的文本编辑器，并且在&lt;code&gt;/etc/systemd/system/&lt;/code&gt;目录下创建一个名为&lt;code&gt;minecraft.service&lt;/code&gt;的文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo nano /etc/systemd/system/minecraft.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;粘贴下面的配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+User=minecraft
+Nice=1
+KillMode=none
+SuccessExitStatus=0 1
+ProtectHome=true
+ProtectSystem=full
+PrivateDevices=true
+NoNewPrivileges=true
+WorkingDirectory=/opt/minecraft/server
+ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+ExecStop=/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password stop
+
+[Install]
+WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据你的服务器资源来调整&lt;code&gt;Xmx&lt;/code&gt;和&lt;code&gt;Xms&lt;/code&gt;标志。&lt;code&gt;Xmx&lt;/code&gt;标志定义 Java 虚拟机的最大申请内存。而&lt;code&gt;Xms&lt;/code&gt;定义了初始申请内存。当前，确保你使用了正确的&lt;code&gt;rcon&lt;/code&gt;端口和密码。&lt;/p&gt;
+&lt;p&gt;保存文件，并且重新加载 systemd 管理配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo systemctl daemon-reload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;你还可以输入下面的命令，启动 Minecraft 服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo systemctl start minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当你第一次启动服务的时候，它将会生成服务器配置文件和目录，包括 我的世界。&lt;/p&gt;
+&lt;p&gt;使用下面的命令，检查服务状态：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo systemctl status minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;● minecraft.service - Minecraft Server
+     Loaded: loaded (/etc/systemd/system/minecraft.service; disabled; vendor preset: enabled)
+     Active: active (running) since Tue 2020-06-23 17:48:44 UTC; 8s ago
+   Main PID: 1338035 (java)
+      Tasks: 15 (limit: 1074)
+     Memory: 465.3M
+     CGroup: /system.slice/minecraft.service
+             └─1338035 /usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最后，启动 Minecraft 服务开机启动。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo systemctl enable minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;七-调整防火墙&#34;&gt;七、调整防火墙&lt;/h2&gt;
+&lt;p&gt;Ubuntu 附带防火墙工具 UFW。如果在你的系统上启用了防火墙，你想从你的本地网络访问 Minecraft 服务器，你需要打开端口&lt;code&gt;25565&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo ufw allow 25565/tcp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;八-配置备份&#34;&gt;八、配置备份&lt;/h2&gt;
+&lt;p&gt;在这一节，我们创建一个备份 shell 脚本和计划任务，以便自动备份 Minecraft 服务器。&lt;/p&gt;
+&lt;p&gt;切换到&lt;code&gt;minecraft&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo su - minecraft
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打开你的文本编辑器，并且创建下面的文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nano /opt/minecraft/tools/backup.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;粘贴下面的配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+function rcon {
+  /opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password &amp;quot;$1&amp;quot;
+}
+
+rcon &amp;quot;save-off&amp;quot;
+rcon &amp;quot;save-all&amp;quot;
+tar -cvpzf /opt/minecraft/backups/server-$(date +%F-%H-%M).tar.gz /opt/minecraft/server
+rcon &amp;quot;save-on&amp;quot;
+
+## Delete older backups
+find /opt/minecraft/backups/ -type f -mtime +7 -name &#39;*.gz&#39; -delete
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;保存文件，并且将脚本设置为可执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;chmod +x /opt/minecraft/tools/backup.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下一步，创建一个定时任务，每天自动在一个固定时间运行一次。&lt;/p&gt;
+&lt;p&gt;打开你的 crontab 文件，输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;crontab -e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;每天 23：00 运行备份脚本，粘贴下面的文本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0 23 * * * /opt/minecraft/tools/backup.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;九-访问-minecraft-终端&#34;&gt;九、访问 Minecraft 终端&lt;/h2&gt;
+&lt;p&gt;想要访问 Minecraft 终端，使用&lt;code&gt;mcrcon&lt;/code&gt;工具。你需要指定主机，rcon 端口，rcon 密码并且使用&lt;code&gt;-t&lt;/code&gt;（启动&lt;code&gt;mcrcon&lt;/code&gt;终端模式）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password -t
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Logged in. Type &amp;quot;Q&amp;quot; to quit!
+&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从远程位置访问 Minecraft 终端，确保 rcon 端口没有被阻塞。&lt;/p&gt;
+&lt;p&gt;如果你正常连接到 Minecraft 终端，不想输入一大串命令，你可以创建一个 &lt;a href=&#34;https://linuxize.com/post/how-to-create-bash-aliases/&#34;&gt;bash 关联&lt;/a&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;十-总结&#34;&gt;十、总结&lt;/h2&gt;
+&lt;p&gt;我们已经向你展示如何在 Ubuntu 20.04 上搭建一个 Minecraft（我的世界）服务器，并且设置每天备份。&lt;br&gt;
+现在你可以启动你的 &lt;a href=&#34;https://www.minecraft.net/en-us/download/&#34;&gt;Minecraft 客户端&lt;/a&gt;，连接到服务器，并且开始 Minecraft 冒险。&lt;/p&gt;
+">如何在 Ubuntu 20.04 上搭建 Minecraft (我的世界) 服务器</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://bluesmkun.github.io/-Gridea.github.io/post/docker-an-zhuang-nginx-proxy-manager/"" data-c="
+          &lt;h2 id=&#34;nginx-proxy-manager是一个很简单的反向代理工具&#34;&gt;Nginx proxy manager是一个很简单的反向代理工具。&lt;/h2&gt;
+&lt;p&gt;官网：&lt;a href=&#34;https://nginxproxymanager.com/&#34;&gt;https://nginxproxymanager.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;门槛极低，操作简单，不需要你掌握很复杂的Nginx配置知识，只需要几步就能很轻松完成反向代理的设置和SSL证书的部署&lt;/p&gt;
+&lt;h2 id=&#34;开始部署&#34;&gt;开始部署&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;服务器环境：Debian 10（Ubuntu 20.04也可以）或以上版本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;升级-packages&#34;&gt;升级 packages&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;
+apt install wget curl sudo vim git -y
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装-docker-环境&#34;&gt;安装 Docker 环境&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;
+wget -qO- get.docker.com | bash
+
+  
+
+systemctl enable docker # 设置开机自动启动
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装-docker-compose&#34;&gt;安装 Docker-compose&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;
+sudo curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装-nginx-proxy-manager&#34;&gt;安装 Nginx Proxy Manager&lt;/h2&gt;
+&lt;h2 id=&#34;创建安装目录&#34;&gt;创建安装目录&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;
+mkdir -p /root/data/docker_data/npm
+
+  
+
+cd /root/data/docker_data/npm
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这边我们直接用 docker 的方式安装。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+vim docker-compose.yml
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;英文输入法下，按 i&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+version: &#39;3&#39;
+
+services:
+
+app:
+
+image: &#39;jc21/nginx-proxy-manager:latest&#39;
+
+restart: unless-stopped
+
+ports:
+
+- &#39;80:80&#39; # 冒号左边可以改成自己服务器未被占用的端口
+
+- &#39;81:81&#39; # 冒号左边可以改成自己服务器未被占用的端口
+
+- &#39;443:443&#39; # 冒号左边可以改成自己服务器未被占用的端口
+
+volumes:
+
+- ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中
+
+- ./letsencrypt:/etc/letsencrypt # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;按一下 esc，然后 :wq 保存退出，之后&lt;/p&gt;
+&lt;h2 id=&#34;运行并访问-nginx-proxy-manager&#34;&gt;运行并访问 Nginx Proxy Manager&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;
+cd /root/data/docker_data/npm # 来到 dockercompose 文件所在的文件夹下
+
+  
+
+docker-compose up -
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;理论上我们就可以输入 http://ip:81 访问了。&lt;/p&gt;
+&lt;p&gt;默认登陆名和密码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+Email: admin@example.com
+
+Password: changeme
+
+&lt;/code&gt;&lt;/pre&gt;
+">Docker安装Nginx Proxy Manager</a>
+      </div>
+      
+      <div class="item">
+        <a class="result-title" href="https://bluesmkun.github.io/-Gridea.github.io/post/linux-da-jian-x-ui/"" data-c="
+          &lt;h2 id=&#34;x-ui是一个管理面版&#34;&gt;X-UI是一个管理面版&lt;/h2&gt;
+&lt;p&gt;众所周知的原因，我们有些时候并不能顺利的访问某些网站，这对于我们查阅资料的时候带来了诸多的不便。&lt;br&gt;
+进而催生出了许许多多的代理工具，而X-UI就是一个集大成者。&lt;/p&gt;
+&lt;h2 id=&#34;搭建准备&#34;&gt;搭建准备&lt;/h2&gt;
+&lt;p&gt;你需要一个域名（免费的&lt;a href=&#34;https://nic.eu.org/&#34;&gt;eu.org&lt;/a&gt;即可），一台海外服务器，一个SSH连接工具&lt;/p&gt;
+&lt;h2 id=&#34;开始搭建&#34;&gt;开始搭建&lt;/h2&gt;
+&lt;p&gt;服务器环境：Debian 或 Ubuntu&lt;/p&gt;
+&lt;h2 id=&#34;升级-packages&#34;&gt;升级 packages&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;apt update -y
+apt install -y curl
+apt install -y socat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;申请证书&#34;&gt;申请证书&lt;/h2&gt;
+&lt;p&gt;运行Acme脚本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl https://get.acme.sh | sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;申请证书及密钥&lt;br&gt;
+【将代码中注释的邮箱和域名，改为你自己的】&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com
+
+~/.acme.sh/acme.sh  --issue -d 输入你的域名  --standalone
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下载证书及密钥&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;~/.acme.sh/acme.sh --installcert -d 输入你的域名 --key-file /root/private.key --fullchain-file /root/cert.crt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装升级x-ui面板一键脚本&#34;&gt;安装&amp;amp;升级x-ui面板一键脚本&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)             #原版
+
+bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)      #魔改版
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;这个时候你就已经搭建完成了，输入 http://ip:端口 就可以访问了。&lt;/p&gt;
+">Linux搭建 X-UI</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+  // var escape = "[{&#34;content&#34;:&#34;&lt;h2 id=\&#34;minecraft-一直是最流行的游戏之一-它是一个沙盒视频游戏用户可以体验无限的世界并且可以构建不同的结构从简单的房子到高耸的摩天大楼\&#34;&gt;Minecraft 一直是最流行的游戏之一。它是一个沙盒视频游戏，用户可以体验无限的世界，并且可以构建不同的结构，从简单的房子到高耸的摩天大楼。&lt;/h2&gt;\n&lt;h2 id=\&#34;一-搭建准备\&#34;&gt;一、搭建准备&lt;/h2&gt;\n&lt;p&gt;一台服务器（4G RAM以上）并且安装Ubuntu 20 . 04&lt;/p&gt;\n&lt;h2 id=\&#34;二-升级-packages\&#34;&gt;二、升级 packages&lt;/h2&gt;\n&lt;p&gt;安装必要的软件包来构建&lt;code&gt;mcrcon&lt;/code&gt;工具：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo apt update \n\nsudo apt install git build-essential\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;三-安装java\&#34;&gt;三、安装Java&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;sudo apt install openjdk-11-jre-headless\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;四-创建-minecraft-用户\&#34;&gt;四、创建 Minecraft 用户&lt;/h2&gt;\n&lt;p&gt;因为安全原因， Minecraft 不应该在 root 用户下运行。我们将会创建一个新的系统用户和用户组，用户主目录&lt;code&gt;/opt/minecraft&lt;/code&gt;。这个用户有最小权限，来运行 Minecraft 服务器：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo useradd -r -m -U -d /opt/minecraft -s /bin/bash minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;我们不会为这个用户设置密码。这样，这个用户将不能通过 SSH 登录。想要修改&lt;code&gt;minecraft&lt;/code&gt;用户，你将需要使用 root 登录服务器，或者其他有 sudo 权限的用户&lt;/p&gt;\n&lt;h2 id=\&#34;五-在-ubuntu-上安装-minecraft\&#34;&gt;五、在 Ubuntu 上安装 Minecraft&lt;/h2&gt;\n&lt;p&gt;在开始安装过程之前，切换到&lt;code&gt;minecraft&lt;/code&gt;用户：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo su - minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;运行下面的命令在用户主目录下创建三个新的目录：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;mkdir -p ~/{backups,tools,server}\n&lt;/code&gt;&lt;/pre&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;code&gt;backups&lt;/code&gt;目录将会存储 服务器备份。你可以同步这个目录到你的远程备份服务器。&lt;/li&gt;\n&lt;li&gt;&lt;code&gt;tools&lt;/code&gt; 目录将会托管&lt;code&gt;mcrcon&lt;/code&gt;客户端和备份脚本。&lt;/li&gt;\n&lt;li&gt;&lt;code&gt;server&lt;/code&gt;目录将会包含实际的 Minecraft 服务器和它的数据。&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3 id=\&#34;51-下载并且编译mcrcon\&#34;&gt;5.1 下载并且编译&lt;code&gt;mcrcon&lt;/code&gt;&lt;/h3&gt;\n&lt;p&gt;RCON 是一个协议，它允许你连接到 Minecraft 服务器，并且执行命令。&lt;a href=\&#34;https://github.com/tiiffi/mcrcon\&#34;&gt;mcron&lt;/a&gt;是一个 RCON 客户端，使用 C 语言编写而成。&lt;/p&gt;\n&lt;p&gt;我们将会从 Github 下载最新的源代码，并且构建&lt;code&gt;mcrcon&lt;/code&gt;二进制文件。&lt;/p&gt;\n&lt;p&gt;从 Github 克隆&lt;code&gt;Tiiffi/mcrcon&lt;/code&gt;源到&lt;code&gt;~/tools/mcron&lt;/code&gt;目录：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;git clone https://github.com/Tiiffi/mcrcon.git ~/tools/mcrcon\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;一旦完成，验证&lt;code&gt;mcrcon&lt;/code&gt;编译成功，打印它的版本：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;./mcrcon -v\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;输出看起来像是这样：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;mcrcon 0.7.1 (built: Jun 23 2020 15:49:44) - https://github.com/Tiiffi/mcrcon\nBug reports:\n    tiiffi+mcrcon at gmail\n    https://github.com/Tiiffi/mcrcon/issues/\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;52-下载-minecraft-服务器\&#34;&gt;5.2 下载 Minecraft 服务器&lt;/h3&gt;\n&lt;p&gt;有一些 Minecraft 服务器 mods 例如 &lt;a href=\&#34;https://getbukkit.org/download/craftbukkit\&#34;&gt;Craftbukkit&lt;/a&gt; 或者 &lt;a href=\&#34;https://www.spigotmc.org/\&#34;&gt;Spigot&lt;/a&gt; ，允许你在你的服务器上添加特性（插件）以及定制，以及调整服务器设置。&lt;/p&gt;\n&lt;p&gt;在这个指南中，我们将会安装最新的 Mojang 官方 vanilla 我的世界服务器。同样的指令，同样适合于其他的服务器 mods。&lt;/p&gt;\n&lt;p&gt;去 &lt;a href=\&#34;https://minecraft.net/en-us/download/server/\&#34;&gt;Minecraft 下载页面&lt;/a&gt; 下载最新的 Minecraft 服务器 Java 压缩包（JAR）。&lt;br&gt;\n使用&lt;code&gt;wget&lt;/code&gt;下载 jar 文件到&lt;code&gt;~/server&lt;/code&gt;目录。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;wget https://launcher.mojang.com/v1/objects/a0d03225615ba897619220e256a266cb33a44b6b/server.jar -P ~/server\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h3 id=\&#34;53-配置-minecraft-服务器\&#34;&gt;5.3 配置 Minecraft 服务器&lt;/h3&gt;\n&lt;p&gt;一旦下载完成，切换到&lt;code&gt;~/server&lt;/code&gt;目录，并且启动 Minecraft 服务器：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;cd ~/server\njava -Xmx1024M -Xms1024M -jar server.jar nogui\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;第一次启动的时候，服务器执行一些操作，创建&lt;code&gt;server.properties&lt;/code&gt;和&lt;code&gt;eula.txt&lt;/code&gt;文件，并且停止。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;[17:35:14] [main/ERROR]: Failed to load properties from file: server.properties\n[17:35:15] [main/WARN]: Failed to load eula.txt\n[17:35:15] [main/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;想要运行服务器，你需要同意&lt;code&gt;Minecraft EULA&lt;/code&gt;，就像上面输出所有提示的。&lt;/p&gt;\n&lt;p&gt;打开&lt;code&gt;eula.txt&lt;/code&gt;文件，并且修改 &lt;code&gt;eula=false&lt;/code&gt; 为 &lt;code&gt;eula=true&lt;/code&gt;:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;nano ~/server/eula.txt\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;输出：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;eula=true\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;关闭并且保存文件。&lt;br&gt;\n下一步，打开&lt;code&gt;server.properties&lt;/code&gt;文件，并且启动&lt;code&gt;rcon&lt;/code&gt;协议，并且设置 rcon 密码：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;nano ~/server/server.properties\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;定位到下面的行，并且更新它们的值，就像下面显示的一样：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;rcon.port=25575\nrcon.password=strong-password\nenable-rcon=true\n&lt;/code&gt;&lt;/pre&gt;\n&lt;pre&gt;&lt;code&gt;不要忘记将`strong-password`修改为一些更安全的密码。如果你不想从远程位置访问 Minecraft 服务器，确保  rcon 端口被防火墙所阻塞。\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;在这里，你可以调整服务器的默认属性。想要获取更多关于服务器设置的信息，浏览&lt;a href=\&#34;https://minecraft.gamepedia.com/Server.properties\&#34;&gt;server.properties&lt;/a&gt;页面。&lt;/p&gt;\n&lt;h2 id=\&#34;六-创建-systemd-单元文件\&#34;&gt;六、创建 Systemd 单元文件&lt;/h2&gt;\n&lt;p&gt;与手动启动 Minecraft 服务器相比，我们将会创建一个 Systemd 单元文件，并且将 Minecraft 当作服务来运行。&lt;/p&gt;\n&lt;p&gt;通过&lt;code&gt;exit&lt;/code&gt;来切换回你的 sudo 用户。&lt;/p&gt;\n&lt;p&gt;打开你的文本编辑器，并且在&lt;code&gt;/etc/systemd/system/&lt;/code&gt;目录下创建一个名为&lt;code&gt;minecraft.service&lt;/code&gt;的文件：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo nano /etc/systemd/system/minecraft.service\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;粘贴下面的配置：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;[Unit]\nDescription=Minecraft Server\nAfter=network.target\n\n[Service]\nUser=minecraft\nNice=1\nKillMode=none\nSuccessExitStatus=0 1\nProtectHome=true\nProtectSystem=full\nPrivateDevices=true\nNoNewPrivileges=true\nWorkingDirectory=/opt/minecraft/server\nExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui\nExecStop=/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password stop\n\n[Install]\nWantedBy=multi-user.target\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;根据你的服务器资源来调整&lt;code&gt;Xmx&lt;/code&gt;和&lt;code&gt;Xms&lt;/code&gt;标志。&lt;code&gt;Xmx&lt;/code&gt;标志定义 Java 虚拟机的最大申请内存。而&lt;code&gt;Xms&lt;/code&gt;定义了初始申请内存。当前，确保你使用了正确的&lt;code&gt;rcon&lt;/code&gt;端口和密码。&lt;/p&gt;\n&lt;p&gt;保存文件，并且重新加载 systemd 管理配置：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo systemctl daemon-reload\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;你还可以输入下面的命令，启动 Minecraft 服务器：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo systemctl start minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;当你第一次启动服务的时候，它将会生成服务器配置文件和目录，包括 我的世界。&lt;/p&gt;\n&lt;p&gt;使用下面的命令，检查服务状态：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo systemctl status minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;输出：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;● minecraft.service - Minecraft Server\n     Loaded: loaded (/etc/systemd/system/minecraft.service; disabled; vendor preset: enabled)\n     Active: active (running) since Tue 2020-06-23 17:48:44 UTC; 8s ago\n   Main PID: 1338035 (java)\n      Tasks: 15 (limit: 1074)\n     Memory: 465.3M\n     CGroup: /system.slice/minecraft.service\n             └─1338035 /usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;最后，启动 Minecraft 服务开机启动。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo systemctl enable minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;七-调整防火墙\&#34;&gt;七、调整防火墙&lt;/h2&gt;\n&lt;p&gt;Ubuntu 附带防火墙工具 UFW。如果在你的系统上启用了防火墙，你想从你的本地网络访问 Minecraft 服务器，你需要打开端口&lt;code&gt;25565&lt;/code&gt;:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo ufw allow 25565/tcp\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;八-配置备份\&#34;&gt;八、配置备份&lt;/h2&gt;\n&lt;p&gt;在这一节，我们创建一个备份 shell 脚本和计划任务，以便自动备份 Minecraft 服务器。&lt;/p&gt;\n&lt;p&gt;切换到&lt;code&gt;minecraft&lt;/code&gt;:&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;sudo su - minecraft\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;打开你的文本编辑器，并且创建下面的文件：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;nano /opt/minecraft/tools/backup.sh\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;粘贴下面的配置：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;#!/bin/bash\n\nfunction rcon {\n  /opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password &amp;quot;$1&amp;quot;\n}\n\nrcon &amp;quot;save-off&amp;quot;\nrcon &amp;quot;save-all&amp;quot;\ntar -cvpzf /opt/minecraft/backups/server-$(date +%F-%H-%M).tar.gz /opt/minecraft/server\nrcon &amp;quot;save-on&amp;quot;\n\n## Delete older backups\nfind /opt/minecraft/backups/ -type f -mtime +7 -name &#39;*.gz&#39; -delete\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;保存文件，并且将脚本设置为可执行：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;chmod +x /opt/minecraft/tools/backup.sh\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;下一步，创建一个定时任务，每天自动在一个固定时间运行一次。&lt;/p&gt;\n&lt;p&gt;打开你的 crontab 文件，输入：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;crontab -e\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;每天 23：00 运行备份脚本，粘贴下面的文本：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;0 23 * * * /opt/minecraft/tools/backup.sh\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;九-访问-minecraft-终端\&#34;&gt;九、访问 Minecraft 终端&lt;/h2&gt;\n&lt;p&gt;想要访问 Minecraft 终端，使用&lt;code&gt;mcrcon&lt;/code&gt;工具。你需要指定主机，rcon 端口，rcon 密码并且使用&lt;code&gt;-t&lt;/code&gt;（启动&lt;code&gt;mcrcon&lt;/code&gt;终端模式）：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;/opt/minecraft/tools/mcrcon/mcrcon -H 127.0.0.1 -P 25575 -p strong-password -t\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;输出：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;Logged in. Type &amp;quot;Q&amp;quot; to quit!\n&amp;gt; \n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;从远程位置访问 Minecraft 终端，确保 rcon 端口没有被阻塞。&lt;/p&gt;\n&lt;p&gt;如果你正常连接到 Minecraft 终端，不想输入一大串命令，你可以创建一个 &lt;a href=\&#34;https://linuxize.com/post/how-to-create-bash-aliases/\&#34;&gt;bash 关联&lt;/a&gt;。&lt;/p&gt;\n&lt;h2 id=\&#34;十-总结\&#34;&gt;十、总结&lt;/h2&gt;\n&lt;p&gt;我们已经向你展示如何在 Ubuntu 20.04 上搭建一个 Minecraft（我的世界）服务器，并且设置每天备份。&lt;br&gt;\n现在你可以启动你的 &lt;a href=\&#34;https://www.minecraft.net/en-us/download/\&#34;&gt;Minecraft 客户端&lt;/a&gt;，连接到服务器，并且开始 Minecraft 冒险。&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;ru-he-zai-ubuntu-2004-shang-da-jian-minecraft-wo-de-shi-jie-fu-wu-qi&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;如何在 Ubuntu 20.04 上搭建 Minecraft (我的世界) 服务器&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;我的世界&#34;,&#34;slug&#34;:&#34;t_cID8j7V&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/t_cID8j7V/&#34;},{&#34;name&#34;:&#34;Linux&#34;,&#34;slug&#34;:&#34;oygRlPYoX7&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/oygRlPYoX7/&#34;},{&#34;name&#34;:&#34;教程&#34;,&#34;slug&#34;:&#34;dB2r8D4WjZ&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/dB2r8D4WjZ/&#34;}],&#34;date&#34;:&#34;2023-02-02 14:17:39&#34;,&#34;dateFormat&#34;:&#34;2023-02-02&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/post/ru-he-zai-ubuntu-2004-shang-da-jian-minecraft-wo-de-shi-jie-fu-wu-qi/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;8 min read&#34;,&#34;time&#34;:460000,&#34;words&#34;:1816,&#34;minutes&#34;:8},&#34;description&#34;:&#34;Minecraft 一直是最流行的游戏之一。它是一个沙盒视频游戏，用户可以体验无限的世界，并且可以构建不同的结构，从简单的房子到高耸的摩天大楼。\n一、搭建准备\n一台服务器（4G RAM以上）并且安装Ubuntu 20 . 04\n二、升级 p...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#minecraft-%E4%B8%80%E7%9B%B4%E6%98%AF%E6%9C%80%E6%B5%81%E8%A1%8C%E7%9A%84%E6%B8%B8%E6%88%8F%E4%B9%8B%E4%B8%80-%E5%AE%83%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B2%99%E7%9B%92%E8%A7%86%E9%A2%91%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%8F%AF%E4%BB%A5%E4%BD%93%E9%AA%8C%E6%97%A0%E9%99%90%E7%9A%84%E4%B8%96%E7%95%8C%E5%B9%B6%E4%B8%94%E5%8F%AF%E4%BB%A5%E6%9E%84%E5%BB%BA%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%93%E6%9E%84%E4%BB%8E%E7%AE%80%E5%8D%95%E7%9A%84%E6%88%BF%E5%AD%90%E5%88%B0%E9%AB%98%E8%80%B8%E7%9A%84%E6%91%A9%E5%A4%A9%E5%A4%A7%E6%A5%BC\&#34;&gt;Minecraft 一直是最流行的游戏之一。它是一个沙盒视频游戏，用户可以体验无限的世界，并且可以构建不同的结构，从简单的房子到高耸的摩天大楼。&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%80-%E6%90%AD%E5%BB%BA%E5%87%86%E5%A4%87\&#34;&gt;一、搭建准备&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%8C-%E5%8D%87%E7%BA%A7-packages\&#34;&gt;二、升级 packages&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%89-%E5%AE%89%E8%A3%85java\&#34;&gt;三、安装Java&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%9B%9B-%E5%88%9B%E5%BB%BA-minecraft-%E7%94%A8%E6%88%B7\&#34;&gt;四、创建 Minecraft 用户&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%BA%94-%E5%9C%A8-ubuntu-%E4%B8%8A%E5%AE%89%E8%A3%85-minecraft\&#34;&gt;五、在 Ubuntu 上安装 Minecraft&lt;/a&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#51-%E4%B8%8B%E8%BD%BD%E5%B9%B6%E4%B8%94%E7%BC%96%E8%AF%91mcrcon\&#34;&gt;5.1 下载并且编译&lt;code&gt;mcrcon&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#52-%E4%B8%8B%E8%BD%BD-minecraft-%E6%9C%8D%E5%8A%A1%E5%99%A8\&#34;&gt;5.2 下载 Minecraft 服务器&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#53-%E9%85%8D%E7%BD%AE-minecraft-%E6%9C%8D%E5%8A%A1%E5%99%A8\&#34;&gt;5.3 配置 Minecraft 服务器&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%85%AD-%E5%88%9B%E5%BB%BA-systemd-%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6\&#34;&gt;六、创建 Systemd 单元文件&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B8%83-%E8%B0%83%E6%95%B4%E9%98%B2%E7%81%AB%E5%A2%99\&#34;&gt;七、调整防火墙&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%85%AB-%E9%85%8D%E7%BD%AE%E5%A4%87%E4%BB%BD\&#34;&gt;八、配置备份&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E4%B9%9D-%E8%AE%BF%E9%97%AE-minecraft-%E7%BB%88%E7%AB%AF\&#34;&gt;九、访问 Minecraft 终端&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%8D%81-%E6%80%BB%E7%BB%93\&#34;&gt;十、总结&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h2 id=\&#34;nginx-proxy-manager是一个很简单的反向代理工具\&#34;&gt;Nginx proxy manager是一个很简单的反向代理工具。&lt;/h2&gt;\n&lt;p&gt;官网：&lt;a href=\&#34;https://nginxproxymanager.com/\&#34;&gt;https://nginxproxymanager.com&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;门槛极低，操作简单，不需要你掌握很复杂的Nginx配置知识，只需要几步就能很轻松完成反向代理的设置和SSL证书的部署&lt;/p&gt;\n&lt;h2 id=\&#34;开始部署\&#34;&gt;开始部署&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;服务器环境：Debian 10（Ubuntu 20.04也可以）或以上版本&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2 id=\&#34;升级-packages\&#34;&gt;升级 packages&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;\napt install wget curl sudo vim git -y\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;安装-docker-环境\&#34;&gt;安装 Docker 环境&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;\nwget -qO- get.docker.com | bash\n\n  \n\nsystemctl enable docker # 设置开机自动启动\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;安装-docker-compose\&#34;&gt;安装 Docker-compose&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;\nsudo curl -L &amp;quot;https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)&amp;quot; -o /usr/local/bin/docker-compose\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;安装-nginx-proxy-manager\&#34;&gt;安装 Nginx Proxy Manager&lt;/h2&gt;\n&lt;h2 id=\&#34;创建安装目录\&#34;&gt;创建安装目录&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;\nmkdir -p /root/data/docker_data/npm\n\n  \n\ncd /root/data/docker_data/npm\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;这边我们直接用 docker 的方式安装。&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;\nvim docker-compose.yml\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;英文输入法下，按 i&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;\nversion: &#39;3&#39;\n\nservices:\n\napp:\n\nimage: &#39;jc21/nginx-proxy-manager:latest&#39;\n\nrestart: unless-stopped\n\nports:\n\n- &#39;80:80&#39; # 冒号左边可以改成自己服务器未被占用的端口\n\n- &#39;81:81&#39; # 冒号左边可以改成自己服务器未被占用的端口\n\n- &#39;443:443&#39; # 冒号左边可以改成自己服务器未被占用的端口\n\nvolumes:\n\n- ./data:/data # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 data 文件夹中\n\n- ./letsencrypt:/etc/letsencrypt # 冒号左边可以改路径，现在是表示把数据存放在在当前文件夹下的 letsencrypt 文件夹中\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;按一下 esc，然后 :wq 保存退出，之后&lt;/p&gt;\n&lt;h2 id=\&#34;运行并访问-nginx-proxy-manager\&#34;&gt;运行并访问 Nginx Proxy Manager&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;\ncd /root/data/docker_data/npm # 来到 dockercompose 文件所在的文件夹下\n\n  \n\ndocker-compose up -\n\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;理论上我们就可以输入 http://ip:81 访问了。&lt;/p&gt;\n&lt;p&gt;默认登陆名和密码：&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;\nEmail: admin@example.com\n\nPassword: changeme\n\n&lt;/code&gt;&lt;/pre&gt;\n&#34;,&#34;fileName&#34;:&#34;docker-an-zhuang-nginx-proxy-manager&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Docker安装Nginx Proxy Manager&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;Docker&#34;,&#34;slug&#34;:&#34;RRKREX7nO&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/RRKREX7nO/&#34;},{&#34;name&#34;:&#34;Linux&#34;,&#34;slug&#34;:&#34;oygRlPYoX7&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/oygRlPYoX7/&#34;},{&#34;name&#34;:&#34;教程&#34;,&#34;slug&#34;:&#34;dB2r8D4WjZ&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/dB2r8D4WjZ/&#34;}],&#34;date&#34;:&#34;2023-02-01 20:32:11&#34;,&#34;dateFormat&#34;:&#34;2023-02-01&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/post/docker-an-zhuang-nginx-proxy-manager/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:true,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:108000,&#34;words&#34;:426,&#34;minutes&#34;:2},&#34;description&#34;:&#34;Nginx proxy manager是一个很简单的反向代理工具。\n官网：https://nginxproxymanager.com\n门槛极低，操作简单，不需要你掌握很复杂的Nginx配置知识，只需要几步就能很轻松完成反向代理的设置和SSL...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#nginx-proxy-manager%E6%98%AF%E4%B8%80%E4%B8%AA%E5%BE%88%E7%AE%80%E5%8D%95%E7%9A%84%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%B7%A5%E5%85%B7\&#34;&gt;Nginx proxy manager是一个很简单的反向代理工具。&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%A7%8B%E9%83%A8%E7%BD%B2\&#34;&gt;开始部署&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%8D%87%E7%BA%A7-packages\&#34;&gt;升级 packages&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85-docker-%E7%8E%AF%E5%A2%83\&#34;&gt;安装 Docker 环境&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85-docker-compose\&#34;&gt;安装 Docker-compose&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85-nginx-proxy-manager\&#34;&gt;安装 Nginx Proxy Manager&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%88%9B%E5%BB%BA%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95\&#34;&gt;创建安装目录&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E8%BF%90%E8%A1%8C%E5%B9%B6%E8%AE%BF%E9%97%AE-nginx-proxy-manager\&#34;&gt;运行并访问 Nginx Proxy Manager&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;},{&#34;content&#34;:&#34;&lt;h2 id=\&#34;x-ui是一个管理面版\&#34;&gt;X-UI是一个管理面版&lt;/h2&gt;\n&lt;p&gt;众所周知的原因，我们有些时候并不能顺利的访问某些网站，这对于我们查阅资料的时候带来了诸多的不便。&lt;br&gt;\n进而催生出了许许多多的代理工具，而X-UI就是一个集大成者。&lt;/p&gt;\n&lt;h2 id=\&#34;搭建准备\&#34;&gt;搭建准备&lt;/h2&gt;\n&lt;p&gt;你需要一个域名（免费的&lt;a href=\&#34;https://nic.eu.org/\&#34;&gt;eu.org&lt;/a&gt;即可），一台海外服务器，一个SSH连接工具&lt;/p&gt;\n&lt;h2 id=\&#34;开始搭建\&#34;&gt;开始搭建&lt;/h2&gt;\n&lt;p&gt;服务器环境：Debian 或 Ubuntu&lt;/p&gt;\n&lt;h2 id=\&#34;升级-packages\&#34;&gt;升级 packages&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;apt update -y\napt install -y curl\napt install -y socat\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;申请证书\&#34;&gt;申请证书&lt;/h2&gt;\n&lt;p&gt;运行Acme脚本&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;curl https://get.acme.sh | sh\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;申请证书及密钥&lt;br&gt;\n【将代码中注释的邮箱和域名，改为你自己的】&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;~/.acme.sh/acme.sh --register-account -m xxxx@gmail.com\n\n~/.acme.sh/acme.sh  --issue -d 输入你的域名  --standalone\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;下载证书及密钥&lt;/p&gt;\n&lt;pre&gt;&lt;code&gt;~/.acme.sh/acme.sh --installcert -d 输入你的域名 --key-file /root/private.key --fullchain-file /root/cert.crt\n&lt;/code&gt;&lt;/pre&gt;\n&lt;h2 id=\&#34;安装升级x-ui面板一键脚本\&#34;&gt;安装&amp;amp;升级x-ui面板一键脚本&lt;/h2&gt;\n&lt;pre&gt;&lt;code&gt;bash &amp;lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)             #原版\n\nbash &amp;lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)      #魔改版\n&lt;/code&gt;&lt;/pre&gt;\n&lt;p&gt;这个时候你就已经搭建完成了，输入 http://ip:端口 就可以访问了。&lt;/p&gt;\n&#34;,&#34;fileName&#34;:&#34;linux-da-jian-x-ui&#34;,&#34;abstract&#34;:&#34;&#34;,&#34;title&#34;:&#34;Linux搭建 X-UI&#34;,&#34;tags&#34;:[{&#34;name&#34;:&#34;Linux&#34;,&#34;slug&#34;:&#34;oygRlPYoX7&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/oygRlPYoX7/&#34;},{&#34;name&#34;:&#34;教程&#34;,&#34;slug&#34;:&#34;dB2r8D4WjZ&#34;,&#34;used&#34;:true,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/tag/dB2r8D4WjZ/&#34;}],&#34;date&#34;:&#34;2023-02-01 20:23:39&#34;,&#34;dateFormat&#34;:&#34;2023-02-01&#34;,&#34;feature&#34;:&#34;&#34;,&#34;link&#34;:&#34;https://bluesmkun.github.io/-Gridea.github.io/post/linux-da-jian-x-ui/&#34;,&#34;hideInList&#34;:false,&#34;isTop&#34;:false,&#34;stats&#34;:{&#34;text&#34;:&#34;2 min read&#34;,&#34;time&#34;:76000,&#34;words&#34;:301,&#34;minutes&#34;:2},&#34;description&#34;:&#34;X-UI是一个管理面版\n众所周知的原因，我们有些时候并不能顺利的访问某些网站，这对于我们查阅资料的时候带来了诸多的不便。\n进而催生出了许许多多的代理工具，而X-UI就是一个集大成者。\n搭建准备\n你需要一个域名（免费的eu.org即可），一台...&#34;,&#34;toc&#34;:&#34;&lt;ul class=\&#34;markdownIt-TOC\&#34;&gt;\n&lt;li&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;a href=\&#34;#x-ui%E6%98%AF%E4%B8%80%E4%B8%AA%E7%AE%A1%E7%90%86%E9%9D%A2%E7%89%88\&#34;&gt;X-UI是一个管理面版&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E6%90%AD%E5%BB%BA%E5%87%86%E5%A4%87\&#34;&gt;搭建准备&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA\&#34;&gt;开始搭建&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%8D%87%E7%BA%A7-packages\&#34;&gt;升级 packages&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E7%94%B3%E8%AF%B7%E8%AF%81%E4%B9%A6\&#34;&gt;申请证书&lt;/a&gt;&lt;/li&gt;\n&lt;li&gt;&lt;a href=\&#34;#%E5%AE%89%E8%A3%85%E5%8D%87%E7%BA%A7x-ui%E9%9D%A2%E6%9D%BF%E4%B8%80%E9%94%AE%E8%84%9A%E6%9C%AC\&#34;&gt;安装&amp;amp;升级x-ui面板一键脚本&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;/li&gt;\n&lt;/ul&gt;\n&#34;}]";
+  // var json = escape.substr(1, escape.length - 2);
+  // var datas = json.split(',');
+  // for (let i=0; i < datas.length; i++) {
+  //   let item = datas[i];
+  //   let attrs = item.split('34;:&#34')
+  //   debugger
+  //   console.log(datas[i])
+  // }
+  let escapeMap = new Map();
+  escapeMap.set('&#34;', '"');
+  escapeMap.set('&gt;', '>');
+  escapeMap.set('&#39;', "'");
+  escapeMap.set('&lt;', '<');
+  escapeMap.set('&quot;', '"');
+  escapeMap.set('&amp;', '&');
+</script> -->
+
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+<script type="text/javascript" src="/media/js/mouse/fireworks.js"></script>
+
+
+
+</html>
